@@ -839,7 +839,7 @@ def decode_payload(section, topic, payload):
     # the JSON keys into item to pass to the plugin, and create the
     # outgoing (i.e. transformed) message.
     try:
-        payload_data = json.loads(payload)
+        payload_data = json.loads(payload, strict=False)
         transform_data = dict(transform_data.items() + payload_data.items())
     except Exception as ex:
         logging.debug("Cannot decode JSON object, payload={payload}: {ex}".format(**locals()))
